@@ -12,7 +12,7 @@ main = mainLoop [F]
 
 mainLoop :: [Binary] -> IO ()
 mainLoop acc = do
-  num <- prompt "Enter a biary number: "
+  num <- prompt "Enter a binary number: "
   case asBinary num of
     Nothing  -> exit "Not a number.\nExiting"
     Just bin -> do
