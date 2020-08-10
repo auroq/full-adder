@@ -4,6 +4,7 @@ module Binary
   , fromBool
   , toBool
   , toDecimal
+  , fromDecimal
   , Binary (..)
   ) where
 
@@ -37,3 +38,9 @@ toDecimal = toDecimal' 1 . reverse
         toDecimal' acc (T:bs) = acc + toDecimal' (acc * 2) bs
         toDecimal' acc (F:bs) = 0 + toDecimal' (acc * 2) bs
         toDecimal' acc [] = 0
+
+fromDecimal :: Integer -> [Binary]
+fromDecimal = reverse . fromDecimal'
+  where fromDecimal' 1 = [T]
+        fromDecimal' 0 = [F]
+        fromDecimal' int = fromBool ((int `mod` 2) == 1) : fromDecimal' (int `div` 2)

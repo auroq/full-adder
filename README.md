@@ -1,3 +1,2 @@
-# full-adder
+# Full Adder Kata
 
-add description of full-adder here
